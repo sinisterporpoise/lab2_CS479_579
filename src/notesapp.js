@@ -63,6 +63,20 @@ function addNotes(e) {
   ul.appendChild(li);
 
   notesArea.value = "";
+  let delBtn = document.createElement("button");
+  delBtn.appendChild(document.createTextNode('X'))
+  notestext.appendChild(delBtn);
+
+  function highlight(e) {
+    alert ("Working");
+    e.preventDefault ();      // I'm not sure this is actually needed, but just in case.
+    li.style.backgroundColor = 'yellow';
+  }
+  li.addEventListener("click", highlight)
+  function deleteNoteItem () {
+    notestext.remove();
+  }
+  delBtn.addEventListener("click", deleteNoteItem)
 }
 
 
