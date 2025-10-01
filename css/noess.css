@@ -1,0 +1,33 @@
+:root {
+	--head_foot_bg: #000000 ;
+	--body_bg: turquoise;
+	--head_foot_tc: #FFFFFF;
+	--bodytxt: #000;
+}
+
+.main {
+	grid-display: inline-grid;
+	grid-template-columns: auto, auto, auto;
+}
+
+.header_left,
+.header_center,
+.header_right,
+.footer_left,
+.footer_center,
+.footer-right {
+	background-color: var(head_foot_bg);
+	color: var(head_foot_tc);	
+}
+
+.header_center {
+	.text-align: center;
+}
+
+.main_left,
+.main_center,
+.main_right {
+	background-color: var(body_bg);
+	color: body_txt;
+	text-align: center;
+}
