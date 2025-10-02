@@ -29,8 +29,15 @@ const sbmtBtn = document.getElementById('sbmtBtn')
 //
 //------------------------------------------------------
 function saveNotes() {
-	console.log("Save notes is working");
+  let items = document.querySelectorAll('li');
+	console.log(items[0].innerText);
+  
+  for (let i = 0; i <= items.length; i++) {
+    saveObject = JSON.stringify(items[i].innterText);
+  }
+  console.log(saveObject);
 	return;
+
 }
 
 
@@ -50,29 +57,35 @@ function loadNotes() {
 //
 //----------------------------------------------------
 function addNotes(e) {
+  
   e.preventDefault();
   let text = notesArea.value;
   console.log(text);
   let ul = notestext.querySelector('ul');
+  
+
   if (!ul) {
   	ul = document.createElement("ul");
       notestext.appendChild(ul);
   }
   let li = document.createElement("li")
+  
+
   li.textContent = text;
   ul.appendChild(li);
 
+  
   notesArea.value = "";
   let delBtn = document.createElement("button");
   delBtn.appendChild(document.createTextNode('X'))
   notestext.appendChild(delBtn);
 
   function highlight(e) {
-    alert ("Working");
-    e.preventDefault ();      // I'm not sure this is actually needed, but just in case.
     li.style.backgroundColor = 'yellow';
   }
   li.addEventListener("click", highlight)
+  
+
   function deleteNoteItem () {
     notestext.remove();
   }
