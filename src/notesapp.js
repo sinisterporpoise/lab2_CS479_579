@@ -30,12 +30,12 @@ const sbmtBtn = document.getElementById('sbmtBtn')
 //------------------------------------------------------
 function saveNotes() {
   let items = document.querySelectorAll('li');
-	console.log(items[0].innerText);
-  
-  for (let i = 0; i <= items.length; i++) {
-    saveObject = JSON.stringify(items[i].innterText);
+  let notes = []
+  for (let i = 0; i < items.length; i++) {
+    notes.push(items[i].innerText)
   }
-  console.log(saveObject);
+  saveObject = JSON.stringify(notes);
+  alert(saveObject);
 	return;
 
 }
@@ -48,7 +48,9 @@ function saveNotes() {
 //-----------------------------------------------------
 function loadNotes() {
 	console.log ("loadNotes is working");
-	return;
+	notes = answer ("Enter your JSON-formatted object: ")
+  notes = JSON.parse(notes);
+  console.log(notes);
 }
 
 //-----------------------------------------------------
