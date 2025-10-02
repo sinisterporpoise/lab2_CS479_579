@@ -47,12 +47,38 @@ function saveNotes() {
 // 
 //-----------------------------------------------------
 function loadNotes() {
-	console.log ("loadNotes is working");
-	notes = answer ("Enter your JSON-formatted object: ")
-  notes = JSON.parse(notes);
-  console.log(notes);
-}
+    notes = prompt("Enter your JSON-formatted object: ");
+    notes = JSON.parse(notes);
 
+    notestext.innerHTML = ""; // Clear the container
+
+    let ul = document.createElement('ul'); 
+    function deleteNoteItem(e) {
+        e.target.parentNode.remove();
+    }
+
+    function highlight(e) {
+        e.target.style.backgroundColor = 'yellow';
+    }
+
+    for (let i = 0; i < notes.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = notes[i]; 
+
+        let delBtn = document.createElement("button");
+        delBtn.textContent = 'X'; 
+        
+        delBtn.addEventListener("click", deleteNoteItem);
+        li.addEventListener("click", highlight);
+
+        li.appendChild(delBtn); 
+        
+        ul.appendChild(li); 
+    }
+    notestext.appendChild(ul); 
+    
+    return;
+}
 //-----------------------------------------------------
 //
 // Add the notes to the text area 
@@ -80,7 +106,7 @@ function addNotes(e) {
   notesArea.value = "";
   let delBtn = document.createElement("button");
   delBtn.appendChild(document.createTextNode('X'))
-  notestext.appendChild(delBtn);
+  li.appendChild(delBtn);
 
   function highlight(e) {
     li.style.backgroundColor = 'yellow';
@@ -89,7 +115,7 @@ function addNotes(e) {
   
 
   function deleteNoteItem () {
-    notestext.remove();
+    li.remove();
   }
   delBtn.addEventListener("click", deleteNoteItem)
 }
